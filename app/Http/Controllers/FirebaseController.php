@@ -28,13 +28,18 @@ class FirebaseController extends Controller
 
 		$database = $firebase->getDatabase();
 
-		$newPost = $database
-            ->getReference('blog/posts')
-            ->push(['title' => 'Post title','body' => 'This should probably be longer.']);
+		// $newPost = $database
+        //     ->getReference('blog/posts')
+            // ->push(['title' => 'Post title','body' => 'This should probably be longer.']);
+
+        $Posts = $database
+            ->getReference('blog/posts');
 
 		echo"<pre>";
 
-        print_r($newPost->getvalue());
+        // print_r($newPost->getvalue());
+        // print_r($Posts->getvalue());
+        return json_encode($Posts->getvalue());
         
         echo"</pre>";
 
